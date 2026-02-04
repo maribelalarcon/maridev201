@@ -18,7 +18,7 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary font-mono text-sm lg:text-base mb-4">
-            ¡Hola! Mi nombre es
+            ¡Hola! Mi nombre es Maribel
           </p>
         </motion.div>
 
@@ -28,7 +28,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-4"
         >
-          <span className="text-foreground">Tu Nombre Aquí</span>
+          <span className="text-foreground">Maribel</span>
         </motion.h1>
 
         <motion.h2
