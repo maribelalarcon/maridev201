@@ -60,7 +60,7 @@ const About = () => {
               <div className="relative aspect-square bg-secondary rounded-lg overflow-hidden border-2 border-primary/50">
                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
                 <img
-                  src="../../images/yo.png"
+                  src="/images/yo.png"
                   alt="Foto de perfil"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
