@@ -34,11 +34,11 @@ const Contact = () => {
         >
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <Mail className="w-5 h-5 text-primary" />
-            <span>correo@ejemplo.com</span>
+            <span>maribelsoledadalarcon@gmail.com</span>
           </div>
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <MapPin className="w-5 h-5 text-primary" />
-            <span>Tu Ciudad, País</span>
+            <span>Madrid, España</span>
           </div>
         </motion.div>
 
@@ -48,7 +48,7 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <a
-            href="mailto:correo@ejemplo.com"
+            href="malito:maribelsoledadalarcon@gmail.com"
             className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary/10 transition-colors text-lg"
           >
             <Send className="w-5 h-5" />
