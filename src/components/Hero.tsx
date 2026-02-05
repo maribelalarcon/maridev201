@@ -77,7 +77,7 @@ const Hero = () => {
           className="flex gap-6"
         >
           <a
-            href="https://github.com"
+            href="https://github.com/maribelalarcon"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
@@ -86,7 +86,7 @@ const Hero = () => {
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/maribel-alarcon/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
@@ -95,7 +95,7 @@ const Hero = () => {
             <Linkedin className="w-6 h-6" />
           </a>
           <a
-            href="mailto:correo@ejemplo.com"
+            href="mailto:maribelsoledadalarcon@gmail.com"
             className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="Email"
           >

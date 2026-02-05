@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
+
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -59,7 +60,7 @@ const About = () => {
               <div className="relative aspect-square bg-secondary rounded-lg overflow-hidden border-2 border-primary/50">
                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face"
+                  src="../../images/yo.png"
                   alt="Foto de perfil"
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
