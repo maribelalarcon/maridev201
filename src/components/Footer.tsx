@@ -2,7 +2,7 @@ import { Github, Linkedin, Mail, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-8 px-6 border-t border-border">
+    <footer className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 px-6 py-4 backdrop-blur-md">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm font-mono">
@@ -39,7 +39,7 @@ const Footer = () => {
               <Twitter className="w-5 h-5" />
             </a>
             <a
-              href="maribelsoledadalarcon@gmail.com"
+              href="#contacto-formulario"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Email"
             >

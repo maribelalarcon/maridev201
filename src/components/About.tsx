@@ -31,9 +31,7 @@ const About = () => {
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
               ¡Hola! Soy una desarrolladora full stack apasionada por crear 
-              soluciones digitales que marquen la diferencia. Mi viaje en el 
-              desarrollo web comenzó hace varios años, y desde entonces no he 
-              dejado de aprender y crecer.
+              soluciones digitales que marquen la diferencia. 
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Me especializo en construir aplicaciones web completas, desde el 
@@ -42,11 +40,7 @@ const About = () => {
               trabajando en proyectos que combinan creatividad con soluciones 
               técnicas elegantes.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              Actualmente estoy enfocada en proyectos que utilizan las últimas 
-              tecnologías del ecosistema JavaScript/TypeScript, siempre buscando 
-              las mejores prácticas y patrones de diseño.
-            </p>
+          
           </motion.div>
 
           <motion.div
@@ -60,9 +54,9 @@ const About = () => {
               <div className="relative aspect-square bg-secondary rounded-lg overflow-hidden border-2 border-primary/50">
                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
                 <img
-                  src="/images/yo.png"
+                  src="/maribelAlarcon.jpg"
                   alt="Foto de perfil"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full object-cover object-[52%_18%] scale-125 grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
             </div>
