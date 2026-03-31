@@ -95,7 +95,7 @@ const Hero = () => {
             <Linkedin className="w-6 h-6" />
           </a>
           <a
-            href="mailto:maribelsoledadalarcon@gmail.com"
+            href="#contacto-formulario"
             className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="Email"
           >

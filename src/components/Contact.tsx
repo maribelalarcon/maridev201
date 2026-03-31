@@ -42,19 +42,72 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        <motion.div
+        <motion.form
+          id="contacto-formulario"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
+          action="https://formsubmit.co/maribelsoledadalarcon@gmail.com"
+          method="POST"
+          className="mt-12 rounded-2xl border border-border bg-card p-6 text-left shadow-lg"
         >
-          <a
-            href="malito:maribelsoledadalarcon@gmail.com"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-primary text-primary font-medium rounded-lg hover:bg-primary/10 transition-colors text-lg"
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://maridev201.vercel.app/" />
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <label className="flex flex-col gap-2">
+              <span className="font-mono text-sm text-foreground">Nombre</span>
+              <input
+                type="text"
+                name="name"
+                required
+                className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+                placeholder="Tu nombre"
+              />
+            </label>
+
+            <label className="flex flex-col gap-2">
+              <span className="font-mono text-sm text-foreground">Email</span>
+              <input
+                type="email"
+                name="email"
+                required
+                className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+                placeholder="tu@email.com"
+              />
+            </label>
+          </div>
+
+          <label className="mt-6 flex flex-col gap-2">
+            <span className="font-mono text-sm text-foreground">Asunto</span>
+            <input
+              type="text"
+              name="_subject"
+              required
+              className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+              placeholder="Asunto del mensaje"
+            />
+          </label>
+
+          <label className="mt-6 flex flex-col gap-2">
+            <span className="font-mono text-sm text-foreground">Mensaje</span>
+            <textarea
+              name="message"
+              required
+              rows={6}
+              className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
+              placeholder="Cuéntame sobre tu proyecto o tu propuesta"
+            />
+          </label>
+
+          <button
+            type="submit"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             <Send className="w-5 h-5" />
-            Enviar Mensaje
-          </a>
-        </motion.div>
+            Enviar formulario
+          </button>
+        </motion.form>
       </div>
     </section>
   );

@@ -5,14 +5,10 @@ import { useRef } from "react";
 const skills = [
   { name: "React", category: "Frontend" },
   { name: "TypeScript", category: "Language" },
-  { name: "Next.js", category: "Framework" },
   { name: "Node.js", category: "Backend" },
   { name: "PostgreSQL", category: "Database" },
   { name: "MongoDB", category: "Database" },
   { name: "Tailwind CSS", category: "Styling" },
-  { name: "GraphQL", category: "API" },
-  { name: "Docker", category: "DevOps" },
-  { name: "AWS", category: "Cloud" },
   { name: "Git", category: "Tools" },
   { name: "Figma", category: "Design" },
 ];

@@ -5,57 +5,49 @@ import { ExternalLink, Github, Folder } from "lucide-react";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
+    title: "Web de Medicina Estética & Regenerativa",
     description:
-      "Plataforma de comercio electrónico completa con carrito de compras, pagos con Stripe, gestión de inventario y panel de administración.",
-    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Stripe"],
-    github: "https://github.com",
-    live: "https://example.com",
+      "Sitio web corporativo para clínica de medicina estética en Madrid. Incluye catálogo detallado de tratamientos (facial, corporal y capilar), blog especializado (Magazine), integración de sistema de reservas y diseño orientado a la conversión y confianza del paciente. ",
+    tech: [ "TypeScript", "React.vite","Astro"],
+    live: "https://www.dragiulianabissutti.com/",
     featured: true,
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
+    image: "../public/images/web-medicina.png",
   },
+  // {
+  //   title: "Dashboard Analytics",
+  //   description:
+  //     "Panel de control interactivo con visualización de datos en tiempo real, gráficos dinámicos y exportación de reportes.",
+  //   tech: ["React", "D3.js", "Node.js", "MongoDB", "Socket.io"],
+  //   github: "https://github.com",
+  //   live: "https://example.com",
+  //   featured: true,
+  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+  // },
   {
-    title: "Dashboard Analytics",
+    title: "madrid-plan-finder",
     description:
-      "Panel de control interactivo con visualización de datos en tiempo real, gráficos dinámicos y exportación de reportes.",
-    tech: ["React", "D3.js", "Node.js", "MongoDB", "Socket.io"],
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: true,
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-  },
-  {
-    title: "App de Gestión de Tareas",
-    description:
-      "Aplicación de productividad con tableros Kanban, colaboración en tiempo real y notificaciones.",
-    tech: ["React", "TypeScript", "Firebase", "Tailwind"],
-    github: "https://github.com",
-    live: "https://example.com",
+      "Aplicación para descubrir planes en Madrid con una experiencia enfocada en la exploración de actividades y ocio.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/maribelalarcon/madrid-plan-finder",
+    live: "https://madrid-plan-finder.vercel.app/",
     featured: false,
   },
   {
-    title: "API REST Microservicios",
+    title: "tripMate",
     description:
-      "Arquitectura de microservicios con autenticación JWT, rate limiting y documentación Swagger.",
-    tech: ["Node.js", "Express", "Docker", "Redis"],
-    github: "https://github.com",
+      "Aplicación web para organizar viajes y consultar información útil para planificar escapadas de forma más cómoda.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/maribelalarcon/tripMate",
+    live: "https://trip-mate-two-pink.vercel.app/",
     featured: false,
   },
   {
-    title: "Blog Personal",
+    title: "peephole-frontend",
     description:
-      "Blog con MDX, SEO optimizado, modo oscuro y sistema de comentarios.",
-    tech: ["Next.js", "MDX", "Tailwind", "Vercel"],
-    github: "https://github.com",
-    live: "https://example.com",
-    featured: false,
-  },
-  {
-    title: "Chat en Tiempo Real",
-    description:
-      "Aplicación de mensajería con WebSockets, salas privadas y compartir archivos.",
-    tech: ["React", "Socket.io", "Node.js", "MongoDB"],
-    github: "https://github.com",
+      "Frontend de una aplicación con enfoque en una experiencia visual clara, navegación fluida y presentación estructurada del contenido.",
+    tech: ["React", "TypeScript", "Tailwind"],
+    github: "https://github.com/maribelalarcon/peephole-frontend",
+    live: "https://peephole-frontend.vercel.app/",
     featured: false,
   },
 ];

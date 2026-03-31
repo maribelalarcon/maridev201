@@ -60,7 +60,7 @@ const Navbar = () => {
               transition={{ duration: 0.3, delay: 0.4 }}
             >
               <a
-                href="/resume.pdf"
+                href="/MaribelAlarconCV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 py-2 border border-primary text-primary font-mono text-sm rounded hover:bg-primary/10 transition-colors"
@@ -111,7 +111,7 @@ const Navbar = () => {
                 ))}
                 <li className="pt-4">
                   <a
-                    href="/resume.pdf"
+                    href="/MaribelAlarconCV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block px-6 py-3 border border-primary text-primary font-mono rounded hover:bg-primary/10 transition-colors"
