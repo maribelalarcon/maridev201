@@ -11,7 +11,8 @@ const projects = [
     tech: [ "TypeScript", "React.vite","Astro"],
     live: "https://www.dragiulianabissutti.com/",
     featured: true,
-    image: "../public/images/web-medicina.png",
+    image: "/web-medicina.png",
+    imageClassName: "object-top",
   },
   // {
   //   title: "Dashboard Analytics",
@@ -68,12 +69,12 @@ const FeaturedProject = ({ project, index }: { project: typeof projects[0]; inde
       {/* Image */}
       <div className={`lg:col-span-7 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
         <a href={project.live} target="_blank" rel="noopener noreferrer" className="block group">
-          <div className="relative overflow-hidden rounded-lg">
-            <div className="absolute inset-0 bg-primary/20 group-hover:bg-transparent transition-colors z-10" />
+          <div className="relative overflow-hidden rounded-xl border border-border/60 bg-card shadow-xl">
+            <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10" />
             <img
               src={project.image}
               alt={project.title}
-              className="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
+              className={`w-full aspect-video object-cover transition-all duration-500 group-hover:scale-[1.02] ${project.imageClassName ?? ""}`}
             />
           </div>
         </a>
