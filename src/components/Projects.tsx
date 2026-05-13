@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Folder } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
@@ -32,6 +32,24 @@ const projects = [
     github: "https://github.com/maribelalarcon/madrid-plan-finder",
     live: "https://madrid-plan-finder.vercel.app/",
     featured: false,
+  },
+  {
+    title: "Dra. Carolina Sanso",
+    description:
+      "Sitio web profesional para consulta médica, diseñado para presentar servicios, reforzar confianza y facilitar el contacto con pacientes.",
+    tech: ["TypeScript", "React", "Vite"],
+    live: "https://dracarolinasanso.com/",
+    featured: true,
+    image: "/drcarolina-sanso.png",
+  },
+  {
+    title: "Vacation Flow",
+    description:
+      "Aplicación web orientada a la gestión de vacaciones, con una experiencia enfocada en organizar solicitudes y visualizar la información de forma clara.",
+    tech: ["React", "TypeScript", "Vite"],
+    live: "https://vacation-flow.vercel.app/",
+    featured: true,
+    image: "/Vacation-flow.png",
   },
   {
     title: "tripMate",
@@ -81,9 +99,9 @@ const FeaturedProject = ({ project, index }: { project: typeof projects[0]; inde
       </div>
 
       {/* Content */}
-      <div className={`lg:col-span-5 ${isEven ? "lg:order-2 lg:-ml-16" : "lg:order-1 lg:-mr-16"} relative z-10`}>
+      <div className={`lg:col-span-5 ${isEven ? "lg:order-2 lg:pl-4" : "lg:order-1 lg:pr-4"} relative z-10`}>
         <p className="font-mono text-primary text-sm mb-2">Proyecto Destacado</p>
-        <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+        <h3 className="font-display text-2xl font-bold text-foreground mb-4 text-balance">
           {project.title}
         </h3>
         <div className="bg-card p-6 rounded-lg shadow-lg mb-4">
@@ -121,62 +139,11 @@ const FeaturedProject = ({ project, index }: { project: typeof projects[0]; inde
   );
 };
 
-const OtherProject = ({ project, index }: { project: typeof projects[0]; index: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="group bg-card p-6 rounded-lg border border-border card-hover flex flex-col h-full"
-    >
-      <div className="flex justify-between items-start mb-6">
-        <Folder className="w-10 h-10 text-primary" />
-        <div className="flex gap-4">
-          {project.github && (
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-          )}
-          {project.live && (
-            <a
-              href={project.live}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
-              <ExternalLink className="w-5 h-5" />
-            </a>
-          )}
-        </div>
-      </div>
-      <h3 className="font-display text-xl font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
-        {project.title}
-      </h3>
-      <p className="text-muted-foreground text-sm flex-1 mb-4">{project.description}</p>
-      <ul className="flex flex-wrap gap-2 text-xs font-mono text-muted-foreground">
-        {project.tech.map((tech) => (
-          <li key={tech}>{tech}</li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-};
-
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const featuredProjects = projects.filter((p) => p.featured);
-  const otherProjects = projects.filter((p) => !p.featured);
 
   return (
     <section id="proyectos" className="py-24 px-6 lg:px-8" ref={ref}>
@@ -200,20 +167,30 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Other Projects */}
+        {/* GitHub CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-24"
         >
-          <h3 className="font-display text-2xl font-bold text-center mb-12">
-            Otros Proyectos Destacados
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {otherProjects.map((project, index) => (
-              <OtherProject key={project.title} project={project} index={index} />
-            ))}
+          <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/70 p-8 text-center shadow-lg">
+            <p className="font-mono text-sm text-primary mb-3">Más proyectos</p>
+            <h3 className="font-display text-2xl font-bold text-foreground mb-4">
+              ¿Quieres ver más trabajo?
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Puedes explorar más proyectos, repositorios y experimentos en mi perfil de GitHub.
+            </p>
+            <a
+              href="https://github.com/maribelalarcon"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 rounded-full border border-primary/40 px-6 py-3 font-mono text-sm text-foreground transition-colors hover:bg-primary/10"
+            >
+              <Github className="h-4 w-4" />
+              Ver GitHub
+            </a>
           </div>
         </motion.div>
       </div>

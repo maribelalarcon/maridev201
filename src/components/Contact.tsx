@@ -1,11 +1,40 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("sending");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/maribelsoledadalarcon@gmail.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
+
+      setStatus("success");
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
 
   return (
     <section id="contacto" className="py-24 px-6 lg:px-8 bg-secondary/30" ref={ref}>
@@ -47,12 +76,11 @@ const Contact = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          action="https://formsubmit.co/maribelsoledadalarcon@gmail.com"
-          method="POST"
+          onSubmit={handleSubmit}
           className="mt-12 rounded-2xl border border-border bg-card p-6 text-left shadow-lg"
         >
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://maridev201.vercel.app/" />
+          <input type="hidden" name="_subject" value="Nuevo mensaje desde maridev201" />
 
           <div className="grid gap-6 md:grid-cols-2">
             <label className="flex flex-col gap-2">
@@ -82,7 +110,7 @@ const Contact = () => {
             <span className="font-mono text-sm text-foreground">Asunto</span>
             <input
               type="text"
-              name="_subject"
+              name="subject"
               required
               className="rounded-lg border border-border bg-background px-4 py-3 text-foreground outline-none transition-colors focus:border-primary"
               placeholder="Asunto del mensaje"
@@ -102,11 +130,28 @@ const Contact = () => {
 
           <button
             type="submit"
+            disabled={status === "sending"}
             className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90"
           >
             <Send className="w-5 h-5" />
-            Enviar formulario
+            {status === "sending" ? "Enviando..." : "Enviar formulario"}
           </button>
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            Los mensajes se envían a <span className="text-foreground">maribelsoledadalarcon@gmail.com</span>.
+          </p>
+
+          {status === "success" && (
+            <p className="mt-3 text-sm text-green-600">
+              Mensaje enviado correctamente.
+            </p>
+          )}
+
+          {status === "error" && (
+            <p className="mt-3 text-sm text-red-500">
+              El envío no se pudo completar. Si es la primera vez usando FormSubmit, abre el correo de activación enviado a maribelsoledadalarcon@gmail.com y actívalo una sola vez.
+            </p>
+          )}
         </motion.form>
       </div>
     </section>
