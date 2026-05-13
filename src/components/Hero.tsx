@@ -18,7 +18,7 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-primary font-mono text-sm lg:text-base mb-4">
-            ¡Hola! Mi nombre es Maribel
+            Portfolio de Maribel Alarcón
           </p>
         </motion.div>
 
@@ -28,7 +28,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold mb-4"
         >
-          <span className="text-foreground">Maribel</span>
+          <span className="text-foreground">Desarrolladora Full Stack en Madrid</span>
         </motion.h1>
 
         <motion.h2
@@ -37,7 +37,7 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold text-muted-foreground mb-6"
         >
-          Desarrolladora Full Stack
+          React, TypeScript, Node.js y producto digital
         </motion.h2>
 
         <motion.p
@@ -46,8 +46,9 @@ const Hero = () => {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-muted-foreground text-lg lg:text-xl max-w-2xl mb-8"
         >
-          Creo experiencias digitales excepcionales. Especializada en construir 
-          aplicaciones web modernas, escalables y con interfaces que enamoran.
+          Diseño y desarrollo aplicaciones web modernas, escalables y orientadas
+          a negocio. Trabajo en frontend y backend con foco en rendimiento,
+          usabilidad y experiencias digitales claras.
         </motion.p>
 
         <motion.div

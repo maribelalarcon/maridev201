@@ -30,15 +30,16 @@ const About = () => {
             className="lg:col-span-3 space-y-4"
           >
             <p className="text-muted-foreground text-lg leading-relaxed">
-              ¡Hola! Soy una desarrolladora full stack apasionada por crear 
-              soluciones digitales que marquen la diferencia. 
+              Soy Maribel Alarcón, desarrolladora full stack especializada en
+              crear soluciones web que combinan estrategia, diseño y ejecución
+              técnica.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Me especializo en construir aplicaciones web completas, desde el 
-              diseño de interfaces intuitivas hasta la implementación de APIs 
-              robustas y bases de datos escalables. Disfruto especialmente 
-              trabajando en proyectos que combinan creatividad con soluciones 
-              técnicas elegantes.
+              Desarrollo proyectos completos con React, TypeScript y Node.js,
+              desde interfaces intuitivas hasta APIs robustas y bases de datos
+              escalables. Me interesa especialmente construir productos
+              digitales que ayuden a marcas, profesionales y negocios a tener
+              presencia online más sólida y útil.
             </p>
           
           </motion.div>
@@ -55,7 +56,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors" />
                 <img
                   src="/maribelAlarcon.jpg"
-                  alt="Foto de perfil"
+                  alt="Maribel Alarcón, desarrolladora full stack en Madrid"
                   className="w-full h-full object-cover object-[52%_18%] scale-125 grayscale group-hover:grayscale-0 transition-all duration-300"
                 />
               </div>
