@@ -1,8 +1,7 @@
-const RECIPIENT_EMAIL = "maribelsoledadalarcon@gmail.com";
-
 export async function sendContactEmail(payload, env = process.env) {
   const resendApiKey = env.RESEND_API_KEY;
   const fromEmail = env.CONTACT_FROM_EMAIL;
+  const toEmail = env.CONTACT_TO_EMAIL;
 
   if (!resendApiKey) {
     return { status: 500, body: { error: "Falta configurar RESEND_API_KEY." } };
@@ -12,32 +11,44 @@ export async function sendContactEmail(payload, env = process.env) {
     return { status: 500, body: { error: "Falta configurar CONTACT_FROM_EMAIL." } };
   }
 
+  if (!toEmail) {
+    return { status: 500, body: { error: "Falta configurar CONTACT_TO_EMAIL." } };
+  }
+
   const { name, email, subject, message, company } = payload ?? {};
+  const cleanName = String(name ?? "").trim();
+  const cleanEmail = String(email ?? "").trim().toLowerCase();
+  const cleanSubject = String(subject ?? "").trim();
+  const cleanMessage = String(message ?? "").trim();
 
   if (company) {
     return { status: 200, body: { ok: true } };
   }
 
-  if (!name || !email || !subject || !message) {
+  if (!cleanName || !cleanEmail || !cleanSubject || !cleanMessage) {
     return { status: 400, body: { error: "Completa todos los campos obligatorios." } };
   }
 
+  if (!isValidEmail(cleanEmail)) {
+    return { status: 400, body: { error: "Introduce un email válido." } };
+  }
+
   const plainText = [
-    `Nombre: ${name}`,
-    `Email: ${email}`,
-    `Asunto: ${subject}`,
+    `Nombre: ${cleanName}`,
+    `Email: ${cleanEmail}`,
+    `Asunto: ${cleanSubject}`,
     "",
-    message,
+    cleanMessage,
   ].join("\n");
 
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
       <h2>Nuevo mensaje desde maridev201</h2>
-      <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-      <p><strong>Asunto:</strong> ${escapeHtml(subject)}</p>
+      <p><strong>Nombre:</strong> ${escapeHtml(cleanName)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(cleanEmail)}</p>
+      <p><strong>Asunto:</strong> ${escapeHtml(cleanSubject)}</p>
       <p><strong>Mensaje:</strong></p>
-      <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+      <p>${escapeHtml(cleanMessage).replace(/\n/g, "<br />")}</p>
     </div>
   `;
 
@@ -50,9 +61,9 @@ export async function sendContactEmail(payload, env = process.env) {
       },
       body: JSON.stringify({
         from: fromEmail,
-        to: [RECIPIENT_EMAIL],
-        reply_to: email,
-        subject: `[Portfolio] ${subject}`,
+        to: [toEmail],
+        reply_to: `${formatDisplayName(cleanName)} <${cleanEmail}>`,
+        subject: `[Portfolio] ${cleanSubject}`,
         text: plainText,
         html,
       }),
@@ -77,4 +88,12 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function formatDisplayName(value) {
+  return String(value).replace(/[<>"]/g, "").trim() || "Contacto web";
 }

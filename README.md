@@ -9,6 +9,6 @@ El formulario de contacto usa `api/contact.js` y requiere estas variables en Ver
 
 - `RESEND_API_KEY`
 - `CONTACT_FROM_EMAIL`
+- `CONTACT_TO_EMAIL`
 
 Ejemplo en `.env.example`.
-
