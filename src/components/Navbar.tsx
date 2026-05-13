@@ -33,7 +33,7 @@ const Navbar = () => {
       >
         <nav className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
           <a href="#" className="font-display text-2xl font-bold text-primary">
-            {"<Dev />"}
+            {"<MariDev 201 />"}
           </a>
 
           {/* Desktop Navigation */}

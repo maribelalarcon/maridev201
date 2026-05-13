@@ -1,38 +1,52 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, MapPin, Send } from "lucide-react";
+
+type FormStatus = "idle" | "sending" | "success" | "error";
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus("sending");
+    setErrorMessage("");
 
     const form = event.currentTarget;
     const formData = new FormData(form);
 
+    const payload = {
+      name: String(formData.get("name") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      subject: String(formData.get("subject") ?? "").trim(),
+      message: String(formData.get("message") ?? "").trim(),
+      company: String(formData.get("company") ?? "").trim(),
+    };
+
     try {
-      const response = await fetch("https://formsubmit.co/ajax/maribelsoledadalarcon@gmail.com", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
-          Accept: "application/json",
+          "Content-Type": "application/json",
         },
-        body: formData,
+        body: JSON.stringify(payload),
       });
 
+      const responseText = await response.text();
+      const data = responseText ? (JSON.parse(responseText) as { error?: string }) : {};
+
       if (!response.ok) {
-        throw new Error("Request failed");
+        throw new Error(data.error || "No se pudo enviar el mensaje.");
       }
 
       setStatus("success");
       form.reset();
     } catch (error) {
-      console.error(error);
       setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "No se pudo enviar el mensaje.");
     }
   };
 
@@ -49,9 +63,9 @@ const Contact = () => {
             ¡Hablemos!
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
-            Actualmente estoy buscando nuevas oportunidades. Ya sea que tengas 
-            una pregunta, una propuesta de proyecto o simplemente quieras 
-            saludar, ¡estaré encantada de conectar contigo!
+            Actualmente estoy buscando nuevas oportunidades. Ya sea que tengas
+            una pregunta, una propuesta de proyecto o simplemente quieras
+            saludar, estaré encantada de conectar contigo.
           </p>
         </motion.div>
 
@@ -79,8 +93,13 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="mt-12 rounded-2xl border border-border bg-card p-6 text-left shadow-lg"
         >
-          <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_subject" value="Nuevo mensaje desde maridev201" />
+          <input
+            type="text"
+            name="company"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+          />
 
           <div className="grid gap-6 md:grid-cols-2">
             <label className="flex flex-col gap-2">
@@ -131,14 +150,14 @@ const Contact = () => {
           <button
             type="submit"
             disabled={status === "sending"}
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
           >
             <Send className="w-5 h-5" />
             {status === "sending" ? "Enviando..." : "Enviar formulario"}
           </button>
 
           <p className="mt-4 text-sm text-muted-foreground">
-            Los mensajes se envían a <span className="text-foreground">maribelsoledadalarcon@gmail.com</span>.
+            Los mensajes se enviarán a <span className="text-foreground">maribelsoledadalarcon@gmail.com</span>.
           </p>
 
           {status === "success" && (
@@ -149,7 +168,7 @@ const Contact = () => {
 
           {status === "error" && (
             <p className="mt-3 text-sm text-red-500">
-              El envío no se pudo completar. Si es la primera vez usando FormSubmit, abre el correo de activación enviado a maribelsoledadalarcon@gmail.com y actívalo una sola vez.
+              {errorMessage}
             </p>
           )}
         </motion.form>
